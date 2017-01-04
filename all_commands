@@ -1,0 +1,309 @@
+combine multiple files: cat f1 f2 f3 >> output
+rm —r -f filename # avoid asking deleting write-protection files
+
+
+
+# after reserving only use the “e2e” command
+source ~/.bashrc
+e2e
+e2e cluster_reserve
+e2e cluster_reserve xiangz-r1 -r emily  # reserve my username
+e2e submit -c xiangz-r1 -U 1 -r emily vm_test_predictive_modeling.single_decision_tree_test
+ 1331  vi ../build/testoutput/vm_test_predictive_modeling/single_decision_tree_test/single_decision_tree_test/stdout.txt
+
+# change the current branch to  AA7.00
+ git log
+ git branch
+ git branch -a
+ git branch AA7.00 remotes/analytics7.
+
+# install database, framework and functions
+e2e submit -U 1 -c xiangz-r1 -r emily vm_test_predictive_modeling.single_decision_tree_test
+e2e-rb-red66-42
+
+e2e submit -U 1 -c e2e-rb-red66-42 -r emily vm_test_predictive_modeling.single_decision_tree_test
+
+# fast running without install
+e2e submit -c xiangz-r1 -u emily vm_test_predictive_modeling.single_decision_tree_test
+
+# see my cluster’s running status
+http://e2emaster.asterdata.com:8004/cluster?cluster_name=xiangz-r1
+
+# running codes on E2E
+
+put all files and codes under /root/ directory
+
+DB
+select  * from table_name;
+
+# make file
+~/beehive/analytics/   make build
+
+# zip files directory
+/home/xz186023/beehive/builds/build-AA7.00/lib/sqlmr/functions/analytics
+
+# recovery
+git status
+git checkout  /analytics/predictive_modeling/single_decision_tree/
+git status
+
+# single_decision_tree documents
+https://teraworks.td.teradata.com/display/~yg186007/Analytic+Function+%3A+Single+Decision+Tree
+
+# database show column names
+\d tablename    e.g.,  \d iris_attribute_output_2;
+
+ps -ef |grep java
+kill -9 number
+
+# submit for review
+reset commit:  git reset HEAD~1
+
+./tools/py/src/post-review.py -r 22858 --parent=HEAD~1
+
+- ANLY-3406
+
+./tools/py/src/post-review.py -r 22936 --parent=HEAD~1
+
+ ./tools/py/src/post-review.py --parent=HEAD~1
+
+ ./tools/py/src/post-review.py -r 23416 --parent=HEAD~1
+
+adaboost: 22936
+
+Testing Transfer Notes
+
+Name analytics plugin
+
+git  rebase --abort
+
+git diff HEAD~ src/com/asterdata/sqlmr/analytics/predictive_modeling/sdt/single_tree_drive.java
+
+check in the code in staging.
+
+>> git commit -a
+
+if need to amend the log message:
+
+>> git commit --amend
+
+get latest code
+
+>> git svn rebase
+
+see the log in staging
+
+>> git log  ---> to find head minus count
+
+>> ./tools/py/src/post-review.py --parent=HEAD~n --> n is the count. n is usually 1
+~/beehive/tools/py/src/post-review.py --parent=HEAD~1
+
+>>  git reset HEAD~1
+
+go to review board to see the changes and then publish review
+
+https://reviewboard.asterdata.com/dashboard/
+
+After reviewed,
+
+>> git svn dcommit --dry-run
+
+>> git svn dcommit
+
+delete files without permission protection
+sudo chmod -R 777 /path/to/folder/foldername
+rm -r filename
+
+tar -xvzf
+
+ls
+
+e2e-rb-red66-42
+
+#  multiple people using the same cluster to connect to database
+Faraz db: 10.25.187.61
+\l  show all dbs
+\c emily change to db emily
+create database emily
+
+install data into database
+cat /home/svm2_500m.csv | /home/beehive/clients/act -h 10.80.165.170 -c 'copy  svm2_500m (id, attribute, category) FROM STDIN CSV;' -w beehive
+
+cat /home/train.csv/  | /home/beehive/clients/act -h 10.80.163.170 -c ‘copy train (Id, Month, Date, Day, Dept, Origin, Dest, Airline, Distance, Delay) from stdin cvs;’ -U db_superuser -w db_superuser -d random_forest
+
+output csv files
+ncluster_export -U db_superuser -w db_superuser -d multiclass -c iris_response_train.csv
+
+ncluster_export -U db_superuser -w db_superuser -d multiclass -c glass_response_train.csv
+
+ncluster_export -U db_superuser -w db_superuser -d e2e_test -c _numeric_attribute_table_12_02_2016 out.csv
+
+ncluster_export -U db_superuser -w db_superuser -d beehive -c gym_salary salary.csv
+
+\i /root/emily/script_ncluster/single_tree_input.sql
+
+scp root@10.25.187.61:~/.bashrc .
+
+find . -name \*.jar -exec grep -l noarch-aster-jdbc-driver.jar{} \;
+
+find . -name \*.jar -exec grep -l CSVReader {} \;
+
+find . -name \*.jar -exec grep -l build.xml {} \;   appendToStringListBuilder
+
+find . -name \*.jar -exec grep -l appendToStringListBuilder {} \;
+
+http://scikit-learn.org/stable/auto_examples/model_selection/plot_roc.html
+
+git reset —hard
+
+cp -r analytics/predictive_modeling/ ~/code_backups/branch_7.00_bkup
+
+cp -r analytics/predictive_modeling/ ~/code_backups/branch_AA7.00_bkup
+
+scp asterws0061:~/.bashrc ~/
+  227  source ~/.bashrc
+
+# stat filename
+
+# power on your cluster
+e2e cluster_on xiangz-r1
+
+rm -f ./.git/index.lock
+
+git diff HEAD~ single_decision_tree/src/com/asterdata/sqlmr/analytics/predictive_modeling/sdt/single_tree_driveArgs.java
+
+ cp ~/single_tree_driveArgs.java_bkup single_decision_tree/src/com/asterdata/sqlmr/analytics/predictive_modeling/sdt/single_tree_driveArgs.java
+
+  diff -b ~/single_tree_driveArgs.java
+
+git branch > 1
+ 2318  vi 1
+ 2319  chmod +x 1
+ 2320  ./1
+ 2321  git status
+ 2322  git branch
+ 2323  rm 1
+ 2324  git reset --hard HEAD~
+ 2325  git status
+ 2326  rm ../\?/
+ 2327  rm -r ../\?/
+ 2328  rm -r ada_old/
+ 2329  rm -r new/
+ 2330  rm -r ss/
+ 2331  git status
+ 2332  git svn rebase
+ 2333  git log
+ 2334  ls
+ 2335  git branch
+ 2336  cp single_decision_tree/src/com/asterdata/sqlmr/analytics/predictive_modeling/sdt/single_tree_driveArgs.java ~/
+ 2337  git checkout sdt
+ 2338  git status
+ 2339  git log
+ 2340  diff ~/single_tree_driveArgs.java single_decision_tree/src/com/asterdata/sqlmr/analytics/predictive_modeling/sdt/single_tree_driveArgs.java
+ 2341  diff -b ~/single_tree_driveArgs.java single_decision_tree/src/com/asterdata/sqlmr/analytics/predictive_modeling/sdt/single_tree_driveArgs.java
+ 2342  diff -byW 250 ~/single_tree_driveArgs.java single_decision_tree/src/com/asterdata/sqlmr/analytics/predictive_modeling/sdt/single_tree_driveArgs.java
+ 2343  diff -b ~/single_tree_driveArgs.java single_decision_tree/src/com/asterdata/sqlmr/analytics/predictive_modeling/sdt/single_tree_driveArgs.java
+ 2344  git status
+ 2345  git diff
+ 2346  cp single_decision_tree/src/com/asterdata/sqlmr/analytics/predictive_modeling/sdt/single_tree_driveArgs.java ~/single_tree_driveArgs.java_bkup
+ 2347  git checkout single_decision_tree/src/com/asterdata/sqlmr/analytics/predictive_modeling/sdt/single_tree_driveArgs.java
+ 2348  git status
+ 2349  git commit -a --amend
+ 2350  git diff single_decision_tree/src/com/asterdata/sqlmr/analytics/predictive_modeling/sdt/single_tree_driveArgs.java
+ 2351  git diff HEAD~ single_decision_tree/src/com/asterdata/sqlmr/analytics/predictive_modeling/sdt/single_tree_driveArgs.java
+ 2352  cp ~/single_tree_driveArgs.java_bkup single_decision_tree/src/com/asterdata/sqlmr/analytics/predictive_modeling/sdt/single_tree_driveArgs.java
+ 2353  git diff HEAD~ single_decision_tree/src/com/asterdata/sqlmr/analytics/predictive_modeling/sdt/single_tree_driveArgs.java
+ 2354  history
+ 2355  git diff HEAD~ single_decision_tree/src/com/asterdata/sqlmr/analytics/predictive_modeling/sdt/single_tree_driveArgs.java
+ 2356  git diff  -byW 250 HEAD~ single_decision_tree/src/com/asterdata/sqlmr/analytics/predictive_modeling/sdt/single_tree_driveArgs.java
+ 2357  git diff HEAD~ single_decision_tree/src/com/asterdata/sqlmr/analytics/predictive_modeling/sdt/single_tree_driveArgs.java
+ 2358  diff -byW 250 ~/single_tree_driveArgs.java
+ 2359  git diff -byW 250 single_decision_tree/src/com/asterdata/sqlmr/analytics/predictive_modeling/sdt/single_tree_driveArgs.java
+ 2360  ls
+ 2361  git branch -a
+ 2362  git status
+ 2363  git checkout analytics7.00
+ 2364  git commit -a
+ 2365  git checkout analytics7.00
+ 2366  ls
+ 2367  git checkout new
+ 2368  ls
+ 2369  cd single_decision_tree/
+ 2370  ls -al
+ 2371  cd ..
+ 2372  ls
+ 2373  git log
+ 2374  ls
+ 2375  history
+
+https://reviewboard.asterdata.com/r/23416
+
+ git log --follow -p --
+load data into cluster
+go to beehive/build/bin
+./ncluster_loader --username db_superuser --password db_superuser -h 10.80.163.170 -d e2e_test -D ',' --verbose --csv glass_attribute_train
+./data/glass_attribute_train.csv;
+
+./ncluster_loader --username db_superuser --password db_superuser -h 10.80.163.170 -d random_forest -D ',' --verbose --csv train-1m
+./data/train-1m.csv;
+
+E2E test (my virtual machine)
+http://e2emaster.asterdata.com:8004/trends?branch=analytics7.00&user_name=builder-red66&prefix=&columns=24&sortBy=status-test&sortColumn=1
+go to directory ~/beehive/test
+ASTER_DEBUG=1 e2e submit -c <cluster_name> -r <reservation_name> <test_name>
+
+813-495-8689
+
+JDBC:
+https://reviewboard.asterdata.com/r/23207/diff/#index_header
+
+regression follows Mean Squared Error
+MSE = mean((actual_y - predicted_y)^2)
+https://prof.beuth-hochschule.de/fileadmin/user/groemping/downloads/tast_2E2009_2E08199.pdf
+
+gini index
+https://papers.nips.cc/paper/4928-understanding-variable-importances-in-forests-of-randomized-trees.pdf
+
+Step 1: go to my vm in the directory /home/xz186023/beehive/test/vm_test_predictive_modeling/
+Step 2: find single_decision_tree_test.py and modify database, username and password
+
+ASTER_DEBUG=1 e2e submit -c xiangz-r1 -r emily vm_test_predictive_modeling.single_decision_tree_qa_test
+ASTER_DEBUG=1 e2e submit -c xiangz-r1 -r emily vm_test_statistics.glm_qa_test
+ASTER_DEBUG=1 e2e submit -c xiangz-r1 -r emily vm_test_predictive_modeling.adaboost_test
+ASTER_DEBUG=1 e2e submit -c xiangz-r1 -r emily vm_test_predictive_modeling.random_forest_test_qa
+
+diff single_decision_tree/expectedQueryResults/single_tree_drive.results.queryResults ~/beehive/build/testoutput/vm_test_predictive_modeling/single_decision_tree_test/single_decision_tree_test/bhDone/single_tree_drive.results.queryResults
+
+diff single_decision_tree/expectedQueryResults/SDT_AA621_SparseInput_run.results.queryResults  ~/beehive/build/testoutput/vm_test_predictive_modeling/single_decision_tree_test/single_decision_tree_test/bhDone/single_tree_drive.results.queryResults
+
+https://community.topcoder.com/tc?module=ProblemArchive
+
+How to do back port :
+
+- use git log to find commit number
+- git cherry pick + commit number to the back port branch
+- git commit -a in backport branch
+- do checkin with the back port branch
+
+some notes for installing data on db:
+
+- unicode is a problem if you process data on mac and then copy the data to ubuntu system. Make sure you do everything on the same system.
+
+ncli system softrestart
+
+Here is the procedure to change the JVM memory size for your future reference.
+
+(a) To change JVM settings on queen:
+Go to /home/beehive/bin/utils/sqlmr/BridgeJVMLauncher.sh
+
+(b)
+Current ARGS=" -XX:MaxPermSize=512m “
+
+Change to following to get a JVM size of 2048m = 2g. Make sure the new JVM size (2g in this case) is not more than 60% of total RAM size of the system.
+ARGS=" -XX:MaxPermSize=512m -Xmx2048m"
+
+(c) copy to vworkers
+execute ncli node clonefile /home/beehive/bin/utils/sqlmr/BridgJVMLauncher.sh to copy the file to all vworkers.
+
+
+
