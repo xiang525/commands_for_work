@@ -406,6 +406,11 @@ in Admin, you need to active all machines.
 
 
 
+# database operation
+\l    show all databases
+\c dbname   switch to a certain db
+
+
 
 
 
