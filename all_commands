@@ -305,5 +305,113 @@ ARGS=" -XX:MaxPermSize=512m -Xmx2048m"
 (c) copy to vworkers
 execute ncli node clonefile /home/beehive/bin/utils/sqlmr/BridgJVMLauncher.sh to copy the file to all vworkers.
 
+# e2eweb:
+http://e2emaster.asterdata.com:8004
+
+# e2emaster:
+http://e2emaster.asterdata.com:8003
+
+# e2e help
+
+> make                               # builds everything code and tests
+> make build                         # builds core code, no tests
+> make test                          # builds and runs local tests
+> make clients                       # builds client code
+> make package                       # builds code and packages it up
+> make build_for_e2e                 # everything required to run e2e
+> make smoke                         # runs smoke tests
+
+
+
+Cluster name - xiangz-r1
+Queen ip - 10.80.163.170
+3 workers, 1 Loader
+RHEL 6.7
+
+
+# Yuanzhe's account on the cluster
+Cluster name - cyuanzhe-r1
+queen ip - 10.80.165.170
+
+
+upload and run command:
+/home/xz186023/beehive/e2e/py/src/e2e/e2e submit -c xiangz-r1 -U 1 -u xiangz-r1 vm_test_predictive_modeling.hmm_supervised_learner_test
+
+
+# install database, framework and functions
+/home/xz186023/beehive/e2e/py/src/e2e/e2e submit -c xiangz-r1 -U 1 -u xiangz-r1 vm_test_predictive_modeling.single_decision_tree_test
+
+/home/xz186023/beehive/e2e/py/src/e2e/e2e submit -c xiangz-r1 -u xiangz-r1 vm_test_predictive_modeling.single_decision_tree_test
+
+/home/xz186023/beehive/e2e/py/src/e2e/e2e submit -c dev-red65-06 -U 1 -u dev-red65-06 vm_test_predictive_modeling.single_decision_tree_test
+
+
+/home/xz186023/beehive/e2e/py/src/e2e/e2e submit -c cyuanzhe-r1 -U 1 -u cyuanzhe-r1 vm_test_predictive_modeling.single_decision_tree_test
+
+
+# fast running without install
+Aster_DEBUG=1 /home/xz186023/beehive/e2e/py/src/e2e/e2e submit -c xiangz-r1 -u xiangz-r1 vm_test_predictive_modeling.single_decision_tree_test
+
+
+# output directory:
+
+cd /home/xz186023/beehive/build/testoutput/vm_test_predictive_modeling/single_decision_tree_test/single_decision_tree_test
+vi ../build/testoutput/vm_test_predictive_modeling/single_decision_tree_test/single_decision_tree_test/stdout.txt 
+
+
+
+# My VM
+ssh xz186023@asterws0061.labs.teradata.com
+
+#E2E cluster
+ssh root@10.80.163.170
+
+
+
+#Operation on the cluster: 
+
+Developer Password: root/aster4data 
+
+1. Search lib
+find . -name \*.jar -exec grep -l GraphGlobals {} \;
+
+2. Find test case 
+~/beehive/test/ 
+
+3. Run e2e test
+/home/yc186016/beehive/e2e/py/src/e2e/e2e submit -c cyuanzhe-r1 -u cyuanzhe-r1 vm_test_predictive_modeling.hmm_supervised_learner_test
+
+4. login beehive DB 
+/home/beehive/clients/act -U db_superuser
+db_superuser
+
+5. install the large data. 
+cat /home/svm2_500m.csv | /home/beehive/clients/act -h 10.80.165.170 -c 'copy  svm2_500m (id, attribute, category) FROM STDIN CSV;' -w beehive
+
+scp yc186016@asterws0023.labs.teradata.com:/home/yc186016/beehive/test/vm_test_predictive_modeling/svm2/input/ccr_100_train_10000.csv  /home/
+
+6. All the cluster
+http://e2emaster.asterdata.com:8004/clusters
+
+# restart queen:
+source /home/beehive/config/asterenv.sh
+ncli system softrestart
+
+# put ipaddress in browser to check the status of ncluster
+use db_superuser as usr and pws
+in Admin, you need to active all machines.
+
+# test cases directory -- input
+/home/xz186023/beehive/test/vm_test_predictive_modeling/single_decision_tree/input
+
+
+
+
+
+
+
+
+
+
 
 
