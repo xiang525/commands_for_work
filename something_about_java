@@ -1,0 +1,2 @@
+# filename.deleteOnExit()
+The java.io.File.deleteOnExit() method deletes the file or directory defined by the abstract path name when the virtual machine terminates. Files or directories are deleted in the reverse order as they are registered.
