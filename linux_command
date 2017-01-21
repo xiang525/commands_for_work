@@ -1,0 +1,106 @@
+1.chmod o+x <filename>.txt #change access permission
+
+2.scp xxx.txt xipu@euler.ucsd.edu:~/ # remote copy xxx.txt in the current local directory to the home dir of my euler account
+  scp xipu@euler.ucsd.edu:~/R/xxx.txt . #remote copy xxx.txt in the R directory of my euler account to the current local directory.
+
+3.find . -name "*.cpp" -o -name "*.h" | xargs cat | wc -l # search for cpp and h files recursively in current directory,
+then print all files to standard output, and pipe to wc -l (count lines).
+
+4 #loop in linux:
+  for i in 1 3 7 8; do echo $i; echo x$i;done
+  for i in {1..10}; do echo $i;done
+  for ((i=1;i<10;i+=2)); do echo $i;done
+  for f in *.txt; do echo file: $f; done
+5 # using bash to do loop in linux
+ $which bash
+   /usr/bin/bash
+ $nano test.sh
+  (type the following commands in nano)
+ #!/usr/bin/bash
+ for in in 1 3 7 8;
+   do echo $i;
+      echo x$i;
+ done
+
+6 #arithmetics in linux
+  x=2
+  echo $((2*x+1))
+  x=2.5
+  echo $((2*x+1))#error! 
+  
+7 paste f1 f2 -d '|' # combine file 1 and file 2 in parallel, and the delimiter is set to be '|';
+  paste f1 -d '|' -s #connect all lines of file 1 into a single line, and the delimiter is set to be '|';
+ 
+8 An application: download all pdf files from https://sites.google.com/a/eng.ucsd.edu/cse101/lp/documents
+  prefix=https://sites.google.com/a/eng.ucsd.edu/cse101/lp/documents/
+  grep .pdf >1.txt # ???
+  paste 1.txt -d ' ' -s
+  # copy the output(1 line).  
+  for f in final.pdf hw1_p.pdf hw1_s.pdf hw2_p.pdf hw2_s.pdf hw3_p.pdf hw3_s.pdf hw4_p.pdf hdf lp_app_p.pdf \
+      lp_basicExamples_p.pdf lp_duality_p.pdf lp_simplex_p.pdf; do
+      wget $prefix$f -P C++/Algorithm/CS203A;
+  done
+ 
+8x An improved approach to downloading all pdf files from the above site.
+  Step 1: Use wget to download the page that contains all the links:
+  wget https://sites.google.com/a/eng.ucsd.edu/cse101/cse202/documents --no-check-certificate -O x.html 
+
+  Here we used two options:
+    (1) --no-check-certificate to bypass certificate errors;
+    (2) -O to save the page to a given filename instead of the default.
+
+  Step 2: extract all the links to pdf files:
+  grep '/a/eng\.ucsd\.edu/cse101/cse202/documents/.*\.pdf' -o x.html > pdflinks.txt
+  
+  Here we used '-o' to extract only the matched parts instead of the whole lines.
+
+  Step 3: to download all the pdf:
+  prefix='https://sites.google.com/'
+  while read link; do wget $prefix$link -P C++/Algorithm/CS203A; done < pdflinks.txt
+
+  Here we used the combination of 'while' and '<' to process one link at a time.  
+9 Using -bash to compile .cpp files and link .o files:
+  write a .sh file(eg:a.sh) as follows:
+  #!/usr/local/bin/bash
+  rm -f circle.o main.o result.out
+  g++ -c circle.cpp
+  g++ -c main.cpp
+  if [ -f circle.o -a main.o ];then
+     g++ circle.o main.o -o result.out
+     ./result.out
+  fi
+10 Using grep to find object strings starting with "oob" and have "-":
+   grep --color "oob[a-zA-Z]*_[a-zA-Z_]*" filename
+11 Using sed to remove 'oob' from the regular expressions found in #10
+   sed 's/oob\([a-zA-Z]*_[a-zA-Z_]*\)/\1/g' filename
+   s means substitution, \1 means the first group(first pair of ()) of the regular expression, g means global(not just 1 time in a line)
+12 Using awk to do Row operation within a file:
+   (1) awk '{print $1}' filename # print the first field in each row, the default seperator is space+.
+   (2) awk -F, '{print $1}' filename # print the first field in each row, the seperator is comma.
+   (3) awk -F, 'NR<=10 {print $1} NR>10 {exit}' # print the first field in top 10 rows
+   (4) awk -F, 'NR<=10 {print NF}' #print numer of fields in top 10 rows
+13 Nested commands:
+   (1) scp `find -name '*_clean.txt'` xipu@euler.ucsd.edu:~/R # find all '*_clean.txt' files from current directory and then scp to euler/R.
+   (1x) scp $(find -name '*_clean.txt') xipu@euler.ucsd.edu:~/R
+   (2) find . -name '*.txt' | scp xipu@...
+       # 等价于
+       scp xipu@.. `find . -name '*.txt'`
+       # which is NOT what we want. That's why we use nested commands rather than pipe here.
+14 nohup Rscript abstain_split_sep18.R > R.output & #run a program in background.
+14x screen
+   (1) screen # start new session
+   (2) screen -r # restore a running session
+   (3) inside screen detach: Ctr-a d
+   (4) inside screen kill: Ctr-d
+   (5) screen -list
+   (6) screen -S <name> # start a seesion with name <name>
+   (7) screen -S <name> -X quit
+
+15 top # list of running programs
+# 16 q # quit in R
+17 %& #resume and put to background
+18 ctrl z #suspend a running program
+20 cat data.csv
+21 head data.csv
+   head -1 data.csv
+22 cut -d, -f1 data.csv #print the first column of data.csv onto scream.
