@@ -46,6 +46,23 @@
 
 \dF
 
+SELECT * FROM Forest_Drive(
+    ON (SELECT 1)  PARTITION BY 1
+    INPUTTABLE('iris_train')
+    OUTPUTTABLE('iris_model')
+    RESPONSE('species')
+    NUMERICINPUTS('sepal_length','sepal_width','petal_length','petal_width')  
+    CategoricalInputs('species')  
+    MONITORTABLE('iris_monitor_table')
+    TREETYPE('classification')
+    DROPMONITORTABLE('t')
+    minnodesize('3')
+    maxdepth('6')
+    treesize('3')
+);
+
+
+
 
 
 
@@ -90,6 +107,34 @@
 \dF
 
 
+
+
+\remove best_splits_by_attributes.zip
+\remove best_splits_by_nodes.zip
+\remove partition_data.zip
+\remove percentile.zip
+\remove single_tree_drive.zip
+\remove single_tree_predict.zip
+\remove single_tree.jar
+\remove approxPercentileReduce.zip
+\remove approx_percentile.zip
+\remove approxPercentileMap.zip
+
+
+
+
+\install /root/sdt/files/best_splits_by_attributes.zip
+\install /root/sdt/files/best_splits_by_nodes.zip
+\install /root/sdt/files/partition_data.zip
+\install /root/sdt/files/percentile.zip
+\install /root/sdt/files/single_tree_drive.zip
+\install /root/sdt/files/single_tree_predict.zip
+\install /root/sdt/files/single_tree.jar
+\install /root/sdt/files/approxPercentileReduce.zip
+\install /root/sdt/files/approxPercentileMap.zip
+\install /root/sdt/files/approx_percentile.zip
+
+\dF
 
 
 

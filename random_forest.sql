@@ -47,16 +47,6 @@ CREATE TABLE "iris_model" (partition key (task_index)) AS SELECT * FROM forest_b
 
 
 
-Hi Alexander, 
-
-I attached an internal documentation that describes details of the frequentpaths algorithm. 
-Our algorithm follows the reference mentioned at the end of the documentation 
-(J. Pei, J. Han, B. Mortazavi-Asl, Q. Chen, U. Dayal, and M.C. Hsu, PrefixSpan: Mining sequential patterns efficiently by prefix-projected pattern growth. In ICDE’01, Heidelberg, Germany, April 2001
-). 
-
-The sequence length and the distinct number of items are closely related to the input dataset. 
-Thus, the results vary greatly. 
-
 
 
  SELECT * FROM GMMFit ( ON "gmm_init" as init_params PARTITION BY 1  OutputTable('test.myoutput1') InputTable('gmm_iris_train') ClusterNum('3') CovarianceType('spherical') MaxIterNum('10') PackOutput('TRUE') ) ;
